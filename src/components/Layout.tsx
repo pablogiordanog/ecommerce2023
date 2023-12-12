@@ -8,13 +8,13 @@ export default function Menu (){
                 {id:5,path:"/search",item:"Search"},
                 {id:6,path:"/login",item:"Login"}];
 
-    const ItemMenu = (props) =>{
-        const {id, path, item} = props;
+    const ItemMenu = (props:any) => {
+        const { path, item } = props;
         return (
             <>
                 <Link to={path}>{item}</Link>
             </>
-        )
+        );
     }
 
     return (
@@ -24,15 +24,16 @@ export default function Menu (){
                 <ul key="key1">
                     {OPCIONS_MENU.map((optionMenu)=>(
                         <li key={optionMenu.id}>
-                            <ItemMenu id={optionMenu.id} path={optionMenu.path} item={optionMenu.item}/>
+                            <ItemMenu path={optionMenu.path} item={optionMenu.item}/>
                         </li>
                         ))}
                 </ul>
             </nav>
+            <div className="cart">Carrito</div>
             <hr />
             <Outlet />
 
-            <div className="cart">Carrito</div>
+            
         </>
     )
 }

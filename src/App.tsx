@@ -1,15 +1,15 @@
 import "./App.css"
 import { Routes, Route } from "react-router-dom";
-import Layout from "./components/Layout.jsx"
-import Home from './components/Home.jsx';
-import Footer from "./components/Footer.jsx"
-import About from "./components/About.jsx"
-import IndexShop from "./components/shop/IndexShop.jsx"
-import IndexStories from "./components/stories/IndexStories.jsx"
-import Search from "./components/Search.jsx"
+import Layout from "./components/Layout.js"
+import Home from './components/Home.tsx';
+import Footer from "./components/Footer.tsx"
+import About from "./components/About.tsx"
+import IndexShop from "./components/shop/IndexShop.tsx"
+import IndexStories from "./components/stories/IndexStories.tsx"
+import Search from "./components/Search.tsx"
 
-import Login from "./components/Login.jsx"
-import Page404 from "./components/Page404.jsx"
+import Login from "./components/Login.tsx"
+import Page404 from "./components/Page404.tsx"
 
 
 function App() {
@@ -25,7 +25,9 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="*" element={<Page404 />} />
         </Route>
-      </Routes>      
+      </Routes>
+            
+      <Footer/>
     </div>
   )
 }
