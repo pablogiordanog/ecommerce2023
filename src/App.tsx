@@ -7,7 +7,7 @@ import About from "./components/About.tsx"
 import IndexShop from "./components/shop/IndexShop.tsx"
 import IndexStories from "./components/stories/IndexStories.tsx"
 import Search from "./components/Search.tsx"
-
+import Page404 from "./components/Page404.tsx";
 import Login from "./components/Login.tsx"
 
 
@@ -23,7 +23,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/search" element={<Search />} />
           <Route path="/login" element={<Login />} />
-          <Route path="*" element={<Home />} />
+          <Route path="*" element={<Page404 />} />
         </Route>
       </Routes>
             
