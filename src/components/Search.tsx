@@ -1,6 +1,6 @@
 export default function Search(){
     return (<>
-        <>Search</>
-    </>);
-
+            <h1>Search</h1>
+            </>
+    );
 }
