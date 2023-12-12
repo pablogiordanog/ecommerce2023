@@ -9,7 +9,7 @@ import IndexStories from "./components/stories/IndexStories.tsx"
 import Search from "./components/Search.tsx"
 
 import Login from "./components/Login.tsx"
-import Page404 from "./components/Page404.tsx"
+
 
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/search" element={<Search />} />
           <Route path="/login" element={<Login />} />
-          <Route path="*" element={<Page404 />} />
+          <Route path="*" element={<Home />} />
         </Route>
       </Routes>
             
