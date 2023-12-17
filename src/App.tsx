@@ -21,10 +21,10 @@ function App() {
     name:"",
   });
 
-  const handleLogin = (name:any) =>{
+  const handleLogin = (name:string) =>{
     setUser({name});
   }
-  const handleLogout = (name:any) =>{
+  const handleLogout = (name:string) =>{
     name = "";
     setUser({name});
   }
