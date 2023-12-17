@@ -1,12 +1,13 @@
 import { Outlet, Link } from "react-router-dom";
+import { URL_HOME } from "../constants/Contants";
 
 export default function Menu (){
-    const OPCIONS_MENU = [{id:1,path:"/",item:"Ecommerce"},
-                {id:2,path:"/indexshop",item:"Shop"},
-                {id:3,path:"/indexstories",item:"Stories"},
-                {id:4,path:"/about",item:"About"},
-                {id:5,path:"/search",item:"Search"},
-                {id:6,path:"/login",item:"Login"}];
+    const OPCIONS_MENU = [{id:1,path:URL_HOME,item:"Ecommerce"},
+                {id:2,path:"/ecommerce2023/indexshop",item:"Shop"},
+                {id:3,path:"/ecommerce2023/indexstories",item:"Stories"},
+                {id:4,path:"/ecommerce2023/about",item:"About"},
+                {id:5,path:"/ecommerce2023/search",item:"Search"},
+                {id:6,path:"/ecommerce2023/login",item:"Login"}];
 
     const ItemMenu = (props:any) => {
         const { path, item } = props;
