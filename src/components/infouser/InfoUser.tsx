@@ -1,9 +1,8 @@
 import "./infouser.css";
-import { useState } from "react";
 import useAuth from "../../hook/useAuth";
 
 const InfoUser = () => {
-  const { user, handleLogout } = useAuth();
+  const { user } = useAuth();
   
   return (
     <div>
@@ -18,7 +17,7 @@ const InfoUser = () => {
         </a>
       <div className="nav-item dropdown">
         <div className="dropdown-menu">
-          <a className="dropdown-item" onClick={handleLogout}>
+          <a className="dropdown-item" onClick={user.handleLogout}>
             Cerrar Sesion
           </a>
         </div>

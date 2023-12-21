@@ -13,6 +13,7 @@ import Card from "../card/Card";
 
 const Menu = () => {
   const { user } = useAuth();
+  const { name } = user;
   const ItemMenu = (props: any) => {
     const { key, path, item } = props;
     return (
@@ -87,7 +88,7 @@ const Menu = () => {
 
             <li className="nav-link">
               <div>
-                {user.name ? (
+                {name ? (
                   <InfoUser />
                 ) : (
                   <ItemMenu key="11" path={URL_LOGIN} item="Iniciar Sesion" />

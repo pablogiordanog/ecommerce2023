@@ -29,21 +29,20 @@ import Card from "./components/card/Card.tsx";
 
 function App() {
   const [user, setUser] = useState({
-    name: "",
-    pws: "",
+    name:"",
+    pws:"",
   });
 
   const handleLogin = (name: string, pws: string) => {
-    //alert("Usuario: " + name + "  Pws:  " + pws)
-    setUser({ name, pws });
-  };
-  const handleLogout = (name: string, pws: string) => {
-    name = "";
-    pws = "";
     setUser({ name, pws });
   };
 
-  const values = { user, handleLogin, handleLogout };
+  const handleLogout = () => {
+    setUser({ name:"", pws:""});
+  };
+
+
+  const values = {user, handleLogin, handleLogout};
 
   return (
     <AuthContext.Provider value={values}>
@@ -75,7 +74,7 @@ function App() {
         </Route>
       </Routes>
 
-      {/*<Footer />*/}
+      <Footer />
     </AuthContext.Provider>
   );
 }
