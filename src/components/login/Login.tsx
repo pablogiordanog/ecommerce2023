@@ -24,7 +24,7 @@ const Login = () => {
     <>
       <div className="container">
             <div className="card card-container">
-              <img id="profile-img" className="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+              <img id="profile-img" className="profile-img-card" src="./user.svg" />
               <p id="profile-name" className="profile-name-card"></p>
               <form className="form-signin" onSubmit={(e) => handleLogIn(e)}>
                 <span id="reauth-email" className="reauth-email"></span>
