@@ -1,11 +1,12 @@
 import { Navigate, useLocation } from "react-router-dom";
-import useAuth from "../hook/useAuth"
 import { URL_LOGIN } from "../constants/Contants";
+import useInfoUser from "../hook/useInfoUser";
 
 const ProtectedRouter = ({children}:any) =>{
-  const {user} = useAuth()
+  const {email} = useInfoUser();
   const currentLocation = useLocation()
-  if(!user.name){
+  if(!email){
+    console.log("se ejecuto")
     return <Navigate to={URL_LOGIN} state={{from:currentLocation}} replace={true}/>
   }
 

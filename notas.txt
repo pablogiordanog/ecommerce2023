@@ -1,21 +1,92 @@
-<div className="card-body">
-                        <h3 className="card-title text-center">Log in to Codepen</h3>
-                        <div className="card-text">
-                            <div className="alert alert-danger alert-dismissible fade show" role="alert">Incorrect username or password.</div>
-                            <form>
-                                <div className="form-group">
-                                    <label for="exampleInputEmail1">Email address</label>
-                                    <input type="email" className="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                </div>
-                                <div className="form-group">
-                                    <label for="exampleInputPassword1">Password</label>
-                                    <a href="#" style="float:right;font-size:12px;">Forgot password?</a>
-                                    <input type="password" className="form-control form-control-sm" id="exampleInputPassword1">
-                                </div>
-                                <button type="submit" className="btn btn-primary btn-block">Sign in</button>
-                                
-                                <div className="sign-up">
-                                    Don't have an account? <a href="#">Create One</a>
-                                </div>
-                            </form>
-                        </div>
+import "./products.css";
+import { URL_PRODUCTS } from "../../constants/Contants";
+import { Link } from "react-router-dom";
+const Product = (props: any) => {
+
+  const { id, title, price, description, images, creationAt, updatedAt, category, option, rol } = props;
+
+  //opcion = 1, es para usar en vista de producto
+  //opcion = 2, es para usar en la edicion, eliminacion producto
+  const url_id = URL_PRODUCTS + "/" + id;
+  const url_volver = URL_PRODUCTS;
+
+  return (
+    <div className="card col-lg-3 col-md-6 col-sm-12" key={id}>
+      <div className="card-body">
+        <h5 className="card-title">{title}</h5>
+        <p className="card-text">Creado:{creationAt}</p>
+        <p className="card-text">Actualizado:{updatedAt}</p>
+        <div className="d-flex justify-content-center">
+          {option == 1 && rol == "admin" && <a className="btn btn-info mr-2"><Link to={url_id}>Editar</Link></a>}
+          {option == 2 && rol == "admin" && <a className="btn btn-info mr-2"><Link to={url_id}>Actualizar</Link></a>}
+          {option == 2 && rol == "admin" && <a className="btn btn-info mr-2"><Link to={url_id}>Eliminar</Link></a>}
+          {option == 2 && <a className="btn btn-info mr-2"><Link to={url_volver}>Volver</Link></a>}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Product;
+
+
+Ejemplo de avatar
+<div class="chip">
+  <img src="img_avatar.jpg" alt="Person" width="96" height="96">
+  John Doe
+</div>
+
+css
+
+.chip {
+  display: inline-block;
+  padding: 0 25px;
+  height: 50px;
+  font-size: 16px;
+  line-height: 50px;
+  border-radius: 25px;
+  background-color: #f1f1f1;
+}
+
+.chip img {
+  float: left;
+  margin: 0 10px 0 -25px;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+
+
+<div className="modal fade" id="#modal-mensaje" tabindex="-1" role="dialog">
+        <div className="modal-dialog" role="document">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title">{title}</h5>
+              <button
+                type="button"
+                className="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div className="modal-body">
+              <p>{message}</p>
+            </div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="button" className="btn btn-primary">
+                Save changes
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>

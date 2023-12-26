@@ -1,28 +1,62 @@
 import "./infouser.css";
 import useAuth from "../../hook/useAuth";
+import useInfoUser from "../../hook/useInfoUser";
+import { useNavigate } from "react-router-dom";
+import { URL_LOGIN } from "../../constants/Contants";
+
 
 const InfoUser = () => {
-  const { user } = useAuth();
-  
+  const { handleLogout } = useAuth();
+  const { email, avatar, userName } = useInfoUser();
+  const navigate = useNavigate();
+  const handleFormLogin = () => {
+    navigate(URL_LOGIN);
+  };
+  console.log("Usuario")
+  console.log(userName)
+
   return (
-    <div>
-      <a
+    <>
+      <div className="nav-item dropdown">
+        <a
           className="nav-link dropdown-toggle"
-          role="button"
+          id="dropdown01"
           data-toggle="dropdown"
+          aria-haspopup="true"
           aria-expanded="false"
         >
-          <img className="mg-fluid" height="30px" width="30px" src="./user.svg" />  
-          <h6>{user.name}</h6>
+          <div className="chip">
+            {avatar && avatar !== ""?<img
+              src={avatar}
+              alt="Avatar"
+              className="avatar"
+            />:<img
+              src="./user.svg"
+              alt="Avatar"
+              className="avatar"
+            />}
+            
+            {userName ? userName : <p>Iniciar Sesion</p>}
+          </div>
         </a>
-      <div className="nav-item dropdown">
-        <div className="dropdown-menu">
-          <a className="dropdown-item" onClick={user.handleLogout}>
-            Cerrar Sesion
-          </a>
+        <div className="dropdown-menu" aria-labelledby="dropdown01">
+          {email && email !== "" ? (
+            <a className="dropdown-item" onClick={handleLogout}>
+              Cerrar Sesion
+            </a>
+          ) : (
+            <a
+              className="dropdown-item"
+              onClick={() => {
+                handleFormLogin;
+              }}
+            >
+              Iniciar Sesion
+            </a>
+          )}
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

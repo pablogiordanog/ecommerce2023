@@ -5,6 +5,9 @@ import react from '@vitejs/plugin-react-swc'
 export default defineConfig({
   plugins: [react()],
   base:"/ecommerce2023/",
+  server: {
+    host: true
+  }
 })
 //base:"/ecommerce2023/",
 //base:"https://pablogiordanog.github.io/ecommerce2023/",

@@ -1,7 +1,8 @@
-import { URL_ALL_PRODUCTS } from "../../constants/Contants";
-import Product from "./Product";
 import "./products.css"
 import { useEffect, useReducer } from "react";
+import { URL_ALL_PRODUCTS } from "../../constants/Contants";
+import { useParams } from "react-router-dom";
+import Product from "./Product";
 
 const INIT_STATE = { data: [], isLoading: false, error: "", isSuccess: false };
 
@@ -28,7 +29,7 @@ const loadStatus = (state: any, action: any) => {
   }
 };
 
-const loadProducts = (url: string) => {
+const loadProduct = (url: string) => {
   const [state, dispatch] = useReducer(loadStatus, INIT_STATE);
   const { data, isLoading, error, isSuccess } = state;
   useEffect(() => {
@@ -39,7 +40,6 @@ const loadProducts = (url: string) => {
         if (data.error) {
           throw new Error("Error cargando datos");
         }
-        console.log(data);
         dispatch({ type: "isSuccess", payload: data });
       } catch (error) {
         dispatch({ type: "error", payload: "Error" });
@@ -50,17 +50,18 @@ const loadProducts = (url: string) => {
   return { data, isLoading, error, isSuccess };
 };
 
-const IndexProducts = () => {
-  const { data, isLoading, error, isSuccess } = loadProducts(URL_ALL_PRODUCTS);
+const AProduct = () => {
+  const {id} = useParams();
 
-  console.log(isLoading);
+  const url = URL_ALL_PRODUCTS + id
+  const { data, isLoading, error, isSuccess } = loadProduct(url);
 
   if (isLoading) {
-    return <h1>Cargando Productos...</h1>;
+    return <h1>Cargando Producto...</h1>;
   }
 
   if (!isSuccess) {
-    return <h1>Cargando Productos...</h1>;
+    return <h1>Cargando Producto...</h1>;
   }
 
   if (error) {
@@ -69,29 +70,29 @@ const IndexProducts = () => {
 
   //const rol = "customer";
   const rol = "admin";
-  
-
+  console.log(url)
+  console.log(data)
+  const {title,price,description,images,creationAt,updatedAt,category} = data
   return (
-    <div id="galeria" className="container">
-      <div className="row">
-        {data.map((products: any) => (
-            <Product
-              id={products.id}
-              title={products.title}
-              price={products.price}
-              description={products.description}
-              images={products.images}
-              creationAt={products.creationAt}
-              updatedAt={products.updatedAt}
-              category={products.category}
-              option="1"
-              rol={rol}
-            />
-        ))}
+    <>
+      <div id="galeria" className="container">
+        <div className="row">
+              <Product
+                 id={id}
+                 title={title}
+                 price={price}
+                 description={description}
+                 images={images}
+                 creationAt={creationAt}
+                 updatedAt={updatedAt}
+                 category={category}
+                 option="2"
+                 rol={rol}
+              />
+        </div>
       </div>
-    </div>
-  )
-}
-export default IndexProducts
+    </>
+  );
+};
 
-
+export default AProduct;
